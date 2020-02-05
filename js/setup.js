@@ -1,20 +1,19 @@
 'use strict';
 
-var coatColorArray = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var eyesColorArray = ['black', 'red', 'blue', 'yellow', 'green'];
-var fireballColorArray = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
-// var randFireballColor = generateRandomCount(0, fireballColorArray.length - 1);
+var coatColorsArray = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var eyesColorsArray = ['black', 'red', 'blue', 'yellow', 'green'];
+var fireballColorsArray = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var KEY_ENTER = 'Enter';
 var KEY_ESCAPE = 'Escape';
 
 
 function generateArrayObject() {
-  var myObjectArray = [];
+  var myObjectsArray = [];
   for (var i = 1; i <= 4; i++) {
     var obj = generateObject(i);
-    myObjectArray.push(obj);
+    myObjectsArray.push(obj);
   }
-  return myObjectArray;
+  return myObjectsArray;
 }
 
 function generateRandomCount(min, max) {
@@ -22,18 +21,18 @@ function generateRandomCount(min, max) {
 }
 
 function generateObject() {
-  var firstName = ['Иван', 'Хуан Себатьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  var secondName = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-  var randFirstName = generateRandomCount(0, firstName.length - 1);
-  var randSecondName = generateRandomCount(0, secondName.length - 1);
-  var randCoatColor = generateRandomCount(0, coatColorArray.length - 1);
-  var randEyesColor = generateRandomCount(0, eyesColorArray.length - 1);
+  var firstNames = ['Иван', 'Хуан Себатьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+  var secondNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+  var randFirstName = generateRandomCount(0, firstNames.length - 1);
+  var randSecondName = generateRandomCount(0, secondNames.length - 1);
+  var randCoatColor = generateRandomCount(0, coatColorsArray.length - 1);
+  var randEyesColor = generateRandomCount(0, eyesColorsArray.length - 1);
 
 
   return {
-    'name': firstName[randFirstName] + ' ' + secondName[randSecondName],
-    'coatColor': coatColorArray[randCoatColor],
-    'eyesColor': eyesColorArray[randEyesColor]
+    'name': firstNames[randFirstName] + ' ' + secondNames[randSecondName],
+    'coatColor': coatColorsArray[randCoatColor],
+    'eyesColor': eyesColorsArray[randEyesColor]
   };
 }
 
@@ -111,13 +110,11 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-// var randCoatColor = generateRandomCount(0, coatColorArray.length - 1);
-// var randEyesColor = generateRandomCount(0, eyesColorArray.length - 1);
 
 var wizardCoat = document.querySelector('.wizard-coat');
 var inputCoat = document.querySelector('input[name="coat-color"]');
 var coatClickHandler = function () {
-  wizardCoat.setAttribute('style', 'fill:' + coatColorArray[(generateRandomCount(0, coatColorArray.length - 1))]);
+  wizardCoat.setAttribute('style', 'fill:' + coatColorsArray[(generateRandomCount(0, coatColorsArray.length - 1))]);
   inputCoat.setAttribute('value', wizardCoat.style.fill);
 
 };
@@ -127,7 +124,7 @@ wizardCoat.addEventListener('click', coatClickHandler);
 var wizardEyes = document.querySelector('.wizard-eyes');
 var inputEyes = document.querySelector('input[name="eyes-color"]');
 var eyesClickHandler = function () {
-  wizardEyes.setAttribute('style', 'fill:' + eyesColorArray[(generateRandomCount(0, eyesColorArray.length - 1))]);
+  wizardEyes.setAttribute('style', 'fill:' + eyesColorsArray[(generateRandomCount(0, eyesColorsArray.length - 1))]);
   inputEyes.setAttribute('value', wizardEyes.style.fill);
 
 };
@@ -137,8 +134,9 @@ wizardEyes.addEventListener('click', eyesClickHandler);
 var wizardFireball = document.querySelector('.setup-fireball-wrap');
 var inputFireball = document.querySelector('input[name="fireball-color"]');
 var fireballClickHandler = function () {
-  wizardFireball.setAttribute('style', 'background:' + fireballColorArray[(generateRandomCount(0, fireballColorArray.length - 1))]);
-  inputFireball.setAttribute('value', wizardFireball.style.background);
+  var colorFireball = fireballColorsArray[(generateRandomCount(0, fireballColorsArray.length - 1))];
+  wizardFireball.setAttribute('style', 'background:' + colorFireball);
+  inputFireball.setAttribute('value', colorFireball);
 
 };
 wizardFireball.addEventListener('click', fireballClickHandler);
